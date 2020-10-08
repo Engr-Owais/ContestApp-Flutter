@@ -102,8 +102,7 @@ class _AdminHomeState extends State<AdminHome> {
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
-                    .collection("contests").
-                    ,
+                    .collection("contests").snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> querySnapshot) {
                       print(querySnapshot.data.docs);                  if (querySnapshot.hasError) {
