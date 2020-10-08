@@ -6,8 +6,10 @@ class DatabaseFire {
 
   // ignore: non_constant_identifier_names
   Future<void> addContent(ContestModel contestModel) async {
-    print(contestModel.imageUrl);
-    _firestore
+    // print(contestModel.imageUrl);
+    print(contestModel.content);
+    print(contestModel.description);
+    await _firestore
         .collection("contests")
         .add(contestModel.toMap())
         .then((DocumentReference document) {
@@ -16,5 +18,13 @@ class DatabaseFire {
     }).catchError((e) {
       print(e);
     });
+  }
+
+  Stream<List<ContestModel>> getUserList() {
+    print("dat");
+    return _firestore.collection('contests').snapshots().map((snapShot) =>
+        snapShot.docs
+            .map((document) => ContestModel.fromJson(document.data()))
+            .toList());
   }
 }
