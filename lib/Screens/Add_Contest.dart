@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:contest_app/Model/Contest_Model.dart';
 import 'package:contest_app/dbhelper.dart/database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
+
 import 'package:path/path.dart' as Path;
 
 class AddContest extends StatefulWidget {
