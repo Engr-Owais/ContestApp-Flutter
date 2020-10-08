@@ -15,32 +15,6 @@ class _AdminHomeState extends State<AdminHome> {
   String contestName;
   String description;
   final DatabaseFire _firestore = DatabaseFire();
-  // _showDialog() {
-  //   Get.defaultDialog(
-  //       title: 'UPDATE YOUR CONTEST',
-  //       titleStyle: GoogleFonts.adamina(),
-  //       onConfirm: () {
-  //         contestName = _contestName.text;
-  //         description = _contestDesc.text;
-  //       },
-  //       actions: [
-  //         TextFormField(
-  //           controller: _contestName,
-  //           decoration: InputDecoration(
-  //               labelText: "Contest Title",
-  //               border: OutlineInputBorder(
-  //                   borderRadius: BorderRadius.circular(10))),
-  //         ),
-  //         Divider(),
-  //         TextFormField(
-  //           controller: _contestDesc,
-  //           decoration: InputDecoration(
-  //               labelText: "Description Of Contest",
-  //               border: OutlineInputBorder(
-  //                   borderRadius: BorderRadius.circular(10))),
-  //         )
-  //       ]);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -101,14 +75,8 @@ class _AdminHomeState extends State<AdminHome> {
         child: Column(
           children: [
             Expanded(
-<<<<<<< HEAD
-              child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection("contests").snapshots(),
-=======
               child: StreamBuilder<List<ContestModel>>(
                 stream: _firestore.getUserList(),
->>>>>>> safwan
                 builder: (BuildContext context,
                     AsyncSnapshot<List<ContestModel>> querySnapshot) {
                   if (querySnapshot.hasError) {

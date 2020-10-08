@@ -46,43 +46,8 @@ class _AddContestState extends State<AddContest> {
 
       print(fileURL);
     });
-    // final StorageReference postImageRef =
-    //     FirebaseStorage.instance.ref().child("Pictures");
-    // var timekey = new DateTime.now();
-    // final StorageUploadTask uploadTask =
-    //     postImageRef.child(timekey.toString() + ".jpg").putFile(sampleimage);
-
-    // await uploadTask.onComplete;
-    // await postImageRef.getDownloadURL().then((fileURL) {
-    //   url = fileURL;
-    //   print(fileURL);
-    // });
-    //   var _imageUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    //  print(url);
-    //   setState(() {
-    //     url = _imageUrl;
-    //   });
-
-    // await savetoDatabase(url);
+    
   }
-
-  // Future<void> savetoDatabase(url) async {
-  //   print(url);
-  //   var dbTimeKey = new DateTime.now();
-  //   var formatDate = new DateFormat('MMM d,yyyy');
-  //   var formatTime = new DateFormat('EEEE, h:mm aaa');
-
-  //   String date = formatDate.format(dbTimeKey);
-  //   String time = formatTime.format(dbTimeKey);
-
-  //   //DatabaseReference ref = FirebaseDatabase.instance.reference();
-
-  //   var data = {"image": url, "date": date, "time": time};
-
-  //   //  await ref.child("pictures").push().set(data);
-
-  //   await FirebaseFirestore.instance.collection("contests").add(data);//contest yahan sy add hrhy?  Srf Pic Hrhi yha se add  aby bhai yea kya hain    wbhoai  mtodel sy jo karrha tha woh bta   Aby tune kl ye code likha tha
-  // }
 
   @override
   Widget build(BuildContext context) {
