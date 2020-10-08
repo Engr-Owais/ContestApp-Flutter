@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "329728308045",
+    "firebase_url": "https://contestapp-bc177.firebaseio.com",
+    "project_id": "contestapp-bc177",
+    "storage_bucket": "contestapp-bc177.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329728308045:android:b3185220e1e69b736b7d04",
+        "android_client_info": {
+          "package_name": "com.example.contest_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329728308045-v02d3bpfnkmlpb4fbi3hqpbiqtg00fma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbMhW4NkL24_AoSG2ZUR5kiU2b2vglGQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329728308045-v02d3bpfnkmlpb4fbi3hqpbiqtg00fma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
