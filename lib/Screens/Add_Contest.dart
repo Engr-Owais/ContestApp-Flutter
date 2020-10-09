@@ -46,7 +46,6 @@ class _AddContestState extends State<AddContest> {
 
       print(fileURL);
     });
-    
   }
 
   @override
@@ -125,6 +124,7 @@ class _AddContestState extends State<AddContest> {
                     content: contestName,
                     description: contestDesc,
                     imageUrl: url,
+                    
                   );
 
                   if (contestName != "" && contestDesc != "") {
