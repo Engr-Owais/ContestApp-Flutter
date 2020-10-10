@@ -53,18 +53,44 @@ class _AddContestState extends State<AddContest> {
   @override
   Widget build(BuildContext context) {
     Widget enableUpload() {
-      return Container(
-        height: 300,
-        width: 300,
-        child: Column(
-          children: [
-            Image.file(
-              sampleimage,
-              height: 200,
-              width: 100,
-            )
-          ],
-        ),
+      return Column(
+        children: <Widget>[
+          SizedBox(
+            height: 32,
+          ),
+          Center(
+            child: GestureDetector(
+              onTap: () {
+                _imgFromGallery();
+              },
+              child: CircleAvatar(
+                radius: 55,
+                backgroundColor: Color(0xffFDCF09),
+                child: sampleimage != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.file(
+                          sampleimage,
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(50)),
+                        width: 100,
+                        height: 100,
+                        child: Icon(
+                          Icons.camera_alt,
+                          color: Colors.grey[800],
+                        ),
+                      ),
+              ),
+            ),
+          )
+        ],
       );
     }
 
@@ -144,13 +170,14 @@ class _AddContestState extends State<AddContest> {
                     content: contestName,
                     description: contestDesc,
                     imageUrl: url,
-                    startDate: endDate.toUtc().millisecondsSinceEpoch,
+                    endDate: endDate.toUtc().millisecondsSinceEpoch,
                   );
 
                   if (contestName != "" && contestDesc != "") {
                     _firestore.addContent(contestModel);
                     _contestName.text = "";
                     _contestDesc.text = "";
+                    Navigator.pop(context);
 
                     Get.snackbar(
                       "Succes",

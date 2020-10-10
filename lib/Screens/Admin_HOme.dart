@@ -1,5 +1,5 @@
 import 'package:contest_app/Screens/Add_Contest.dart';
-import 'package:contest_app/Screens/leaderboard.dart';
+import 'package:contest_app/Screens/ExpiredContest_LeaderBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
