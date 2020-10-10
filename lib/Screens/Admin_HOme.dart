@@ -23,7 +23,7 @@ class _AdminHomeState extends State<AdminHome> {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: Text(
-          "CONTESTS",
+          "ON-GOING CONTESTS",
           style: GoogleFonts.aclonica(color: Colors.black),
         ),
         centerTitle: true,
@@ -88,8 +88,8 @@ class _AdminHomeState extends State<AdminHome> {
                     final list = querySnapshot.data;
                     return ListView.builder(
                         itemCount: list.length,
-                        itemBuilder: (context, index) => list.length == 0
-                            ? Text("No Data Found")
+                        itemBuilder: (context, index) => list.length == null
+                            ?  Container(child: Text("No Data Found" , style: GoogleFonts.aBeeZee(backgroundColor: Colors.black) ))
                             : Card(
                                 child: ListTile(
                                     isThreeLine: true,

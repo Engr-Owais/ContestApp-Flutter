@@ -23,7 +23,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: Text(
-          "EXPIRED CONTEST",
+          "CLOSED CONTEST",
           style: GoogleFonts.aclonica(color: Colors.black),
         ),
         centerTitle: true,

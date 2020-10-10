@@ -56,7 +56,7 @@ class _VotingScreenState extends State<VotingScreen> {
                     return ListView.builder(
                         itemCount: list.length,
                         itemBuilder: (context, index) => list.length == 0
-                            ? Center(child: Text("No Data Found"))
+                            ? Text("No Data Found")
                             : Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Card(
@@ -125,15 +125,10 @@ class _VotingScreenState extends State<VotingScreen> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           subtitle: Text(
-                                            list[index].email == null
-                                                ? ""
-                                                : list[index].email,
-                                            style: GoogleFonts.acme(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w300),
-                                          ),
+                                                "Votes ${list[index].votes}",
+                                                style: GoogleFonts.workSans(
+                                                    fontSize: 15),
+                                              ),
                                           trailing: FloatingActionButton(
                                             onPressed: () async => {
                                               userid = list[index].id,

@@ -30,10 +30,13 @@ class _AddContestState extends State<AddContest> {
     //   // ignore: deprecated_member_use
     // ignore: deprecated_member_use
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      sampleimage = image;
-    });
+    if (image != null && await image.exists()) {
+      setState(() {
+        sampleimage = image;
+      });
+    } else {
+      return;
+    }
   }
 
   Future<void> uploadStatusImage() async {
@@ -173,10 +176,14 @@ class _AddContestState extends State<AddContest> {
                     endDate: endDate.toUtc().millisecondsSinceEpoch,
                   );
 
-                  if (contestName != "" && contestDesc != "") {
+                  if (contestName != "" &&
+                      contestDesc != "" &&
+                      sampleimage != null) {
                     _firestore.addContent(contestModel);
                     _contestName.text = "";
                     _contestDesc.text = "";
+                    sampleimage = null;
+
                     Navigator.pop(context);
 
                     Get.snackbar(
