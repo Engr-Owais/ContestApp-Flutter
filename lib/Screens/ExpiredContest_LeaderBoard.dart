@@ -49,7 +49,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                     return ListView.builder(
                         itemCount: list.length,
                         itemBuilder: (context, index) => list.length == 0
-                            ? Text("No Data Found")
+                            ? Center(child: Text("No Data Found"))
                             : Card(
                                 child: ListTile(
                                   isThreeLine: true,

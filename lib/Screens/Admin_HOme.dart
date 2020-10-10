@@ -63,12 +63,7 @@ class _AdminHomeState extends State<AdminHome> {
                     Get.to(LeaderboardScreen());
                   }),
               SizedBox(width: 20),
-              IconButton(
-                  icon: Icon(
-                    Icons.done_all,
-                    color: Colors.black,
-                  ),
-                  onPressed: null),
+              
             ],
           ),
         ),

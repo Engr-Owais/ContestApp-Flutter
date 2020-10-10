@@ -45,12 +45,18 @@ class _VotingScreenState extends State<VotingScreen> {
                   if (querySnapshot.connectionState ==
                       ConnectionState.waiting) {
                     return CircularProgressIndicator();
-                  } else {
+                  }
+                  if(!querySnapshot.hasData)
+                  { 
+                    return Center(child:Text("NO PARTICIPANTS"));
+
+                  }
+                   else {
                     final list = querySnapshot.data;
                     return ListView.builder(
                         itemCount: list.length,
                         itemBuilder: (context, index) => list.length == 0
-                            ? Text("No Data Found")
+                            ? Center(child: Text("No Data Found"))
                             : Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Card(
