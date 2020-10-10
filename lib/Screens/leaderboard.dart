@@ -1,18 +1,15 @@
-import 'package:contest_app/Screens/Add_Contest.dart';
-import 'package:contest_app/Screens/leaderboard.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../dbhelper.dart/database.dart';
-import '../Model/Contest_Model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:contest_app/Model/Contest_Model.dart';
+import 'package:contest_app/dbhelper.dart/database.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class AdminHome extends StatefulWidget {
+class LeaderboardScreen extends StatefulWidget {
   @override
-  _AdminHomeState createState() => _AdminHomeState();
+  _LeaderboardScreenState createState() => _LeaderboardScreenState();
 }
 
-class _AdminHomeState extends State<AdminHome> {
+class _LeaderboardScreenState extends State<LeaderboardScreen> {
   String contestName;
   String description;
   final DatabaseFire _firestore = DatabaseFire();
@@ -20,66 +17,12 @@ class _AdminHomeState extends State<AdminHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.amber,
-        title: Text(
-          "CONTESTS",
-          style: GoogleFonts.aclonica(color: Colors.black),
-        ),
-        centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.to(AddContest()),
-        backgroundColor: Colors.black,
-        label: Text(
-          "Add Contest",
-          style: TextStyle(color: Colors.amber),
-        ),
-        icon: Icon(
-          Icons.add,
-          color: Colors.amber,
-        ),
-        elevation: 10.0,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
-      bottomNavigationBar: BottomAppBar(
-        // shape: CircularNotchedRectangle(),
-        notchMargin: 3.0,
-        elevation: 10.0,
-        color: Colors.amber,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                  splashColor: Colors.black,
-                  iconSize: 30,
-                  icon: Icon(
-                    Icons.format_list_numbered,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    Get.to(LeaderboardScreen());
-                  }),
-              SizedBox(width: 20),
-              IconButton(
-                  icon: Icon(
-                    Icons.done_all,
-                    color: Colors.black,
-                  ),
-                  onPressed: null),
-            ],
-          ),
-        ),
-      ),
-      extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: StreamBuilder<List<ContestModel>>(
-                stream: _firestore.getUserList(),
+                stream: _firestore.getCompletedUserList(),
                 builder: (BuildContext context,
                     AsyncSnapshot<List<ContestModel>> querySnapshot) {
                   if (querySnapshot.hasError) {
@@ -91,6 +34,7 @@ class _AdminHomeState extends State<AdminHome> {
                     return CircularProgressIndicator();
                   } else {
                     final list = querySnapshot.data;
+                    debugPrint(list.length.toString());
                     return ListView.builder(
                         itemCount: list.length,
                         itemBuilder: (context, index) => list.length == 0

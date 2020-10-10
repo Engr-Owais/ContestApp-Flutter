@@ -2,7 +2,7 @@ class ContestModel {
   String content;
   String description;
   String imageUrl;
-  DateTime startDate;
+  int startDate;
   int status;
 
   ContestModel(
