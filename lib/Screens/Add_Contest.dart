@@ -4,6 +4,7 @@ import 'package:contest_app/Model/Contest_Model.dart';
 import 'package:contest_app/dbhelper.dart/database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,6 +23,7 @@ class _AddContestState extends State<AddContest> {
 
   TextEditingController _contestName = TextEditingController();
   TextEditingController _contestDesc = TextEditingController();
+  DateTime endDate;
 
   bool focusone = true;
   _imgFromGallery() async {
@@ -110,6 +112,24 @@ class _AddContestState extends State<AddContest> {
                 ),
               ),
               SizedBox(height: 20),
+              FlatButton(
+                  onPressed: () {
+                    DatePicker.showDatePicker(context,
+                        showTitleActions: true,
+                        minTime: DateTime.now(), onChanged: (date) {
+                      setState(() {
+                        endDate = date;
+                      });
+                      print('change $date');
+                    }, onConfirm: (date) {
+                      print('confirm $date');
+                    }, currentTime: DateTime.now(), locale: LocaleType.en);
+                  },
+                  child: Text(
+                    'show date time picker (Chinese)',
+                    style: TextStyle(color: Colors.blue),
+                  )),
+              SizedBox(height: 20),
               RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -124,7 +144,7 @@ class _AddContestState extends State<AddContest> {
                     content: contestName,
                     description: contestDesc,
                     imageUrl: url,
-                    
+                    startDate: endDate.toUtc().millisecondsSinceEpoch,
                   );
 
                   if (contestName != "" && contestDesc != "") {

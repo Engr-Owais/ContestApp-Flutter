@@ -27,4 +27,15 @@ class DatabaseFire {
             .map((document) => ContestModel.fromJson(document.data()))
             .toList());
   }
+
+  Stream<List<ContestModel>> getCompletedUserList() {
+    return _firestore
+        .collection('contests')
+        .where("startDate",
+            isLessThan: new DateTime.now().toUtc().millisecondsSinceEpoch)
+        .snapshots()
+        .map((snapShot) => snapShot.docs
+            .map((document) => ContestModel.fromJson(document.data()))
+            .toList());
+  }
 }
